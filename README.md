@@ -1,6 +1,6 @@
 # GPU Upgrade Calculator Widget
 
-A free embeddable widget powered by [best-gpu.com](https://www.best-gpu.com) — the GPU price-to-performance tracker using live Amazon US prices.
+A free embeddable widget powered by [upgrade-gpu.com](https://www.upgrade-gpu.com) — the GPU price-to-performance tracker using live Amazon prices.
 
 Drop one `<iframe>` on your page and your visitors can instantly find out whether upgrading their GPU is worth it.
 
@@ -8,7 +8,7 @@ Drop one `<iframe>` on your page and your visitors can instantly find out whethe
 
 ## Live demo
 
-👉 [best-gpu.com/widget](https://www.best-gpu.com/widget/)
+👉 [upgrade-gpu.com/us/widget](https://www.upgrade-gpu.com/us/widget/)
 
 ---
 
@@ -18,11 +18,11 @@ Copy and paste this snippet wherever you want the widget to appear:
 
 ```html
 <iframe
-  src="https://www.best-gpu.com/widget/"
+  src="https://www.upgrade-gpu.com/us/widget/"
   width="100%"
-  height="620"
+  height="640"
   style="border:none;border-radius:6px;display:block"
-  title="GPU Upgrade Calculator — best-gpu.com"
+  title="GPU Upgrade Calculator — upgrade-gpu.com"
   loading="lazy"
   allow="clipboard-write">
 </iframe>
@@ -40,13 +40,13 @@ Users pick their current GPU from a list of **200+ models** (NVIDIA, AMD, Intel 
 |---|---|
 | **Perf Gain %** | How much faster the upgrade is vs. their current card |
 | **Value Score** | Performance-per-dollar rating |
-| **Price** | Live price from Amazon US |
+| **Price** | Live price from Amazon |
 | **Brand / Model** | GPU name with brand badge |
 | **VRAM** | Video memory in GB |
 | **Condition** | New or Used |
 | **Check on Amazon** | Direct affiliate buy link |
 
-Results are sorted by **Perf Gain** by default (best upgrade value first). Users can re-sort by Value Score or Price, and filter with the search box.
+Results are sorted by **Value Score** by default (best upgrade value first). Users can re-sort by Perf Gain or Price, and filter with the search box.
 
 ---
 
@@ -58,10 +58,10 @@ All customisation is done through the `<iframe>` attributes — no config needed
 
 ```html
 <!-- Fixed height (recommended for sidebars) -->
-<iframe src="https://www.best-gpu.com/widget/" width="100%" height="600" ...>
+<iframe src="https://www.upgrade-gpu.com/us/widget/" width="100%" height="600" ...>
 
 <!-- Taller for more visible results -->
-<iframe src="https://www.best-gpu.com/widget/" width="100%" height="800" ...>
+<iframe src="https://www.upgrade-gpu.com/us/widget/" width="100%" height="800" ...>
 ```
 
 ### Pre-select a GPU
@@ -70,9 +70,9 @@ Add a `gpu` query parameter to open the widget with a GPU already selected:
 
 ```html
 <iframe
-  src="https://www.best-gpu.com/widget/?gpu=RTX+3080"
+  src="https://www.upgrade-gpu.com/us/widget/?gpu=RTX+3080"
   width="100%"
-  height="620"
+  height="640"
   ...>
 </iframe>
 ```
@@ -93,27 +93,33 @@ Useful if your page is already about a specific card — your readers land strai
 ### Default sort
 
 ```html
-<!-- Sort by best value score -->
-<iframe src="https://www.best-gpu.com/widget/?sort=value" ...>
+<!-- Sort by best value score (default) -->
+<iframe src="https://www.upgrade-gpu.com/us/widget/?sort=value" ...>
 
 <!-- Sort by lowest price -->
-<iframe src="https://www.best-gpu.com/widget/?sort=price" ...>
+<iframe src="https://www.upgrade-gpu.com/us/widget/?sort=price" ...>
 
-<!-- Sort by perf gain (default) -->
-<iframe src="https://www.best-gpu.com/widget/?sort=gain" ...>
+<!-- Sort by perf gain -->
+<iframe src="https://www.upgrade-gpu.com/us/widget/?sort=gain" ...>
 ```
 
 ### Combine parameters
 
 ```html
 <iframe
-  src="https://www.best-gpu.com/widget/?gpu=GTX+1080+Ti&sort=value"
+  src="https://www.upgrade-gpu.com/us/widget/?gpu=GTX+1080+Ti&sort=value"
   width="100%"
-  height="620"
+  height="640"
   style="border:none;border-radius:6px;display:block"
-  title="GPU Upgrade Calculator — best-gpu.com"
+  title="GPU Upgrade Calculator — upgrade-gpu.com"
   loading="lazy">
 </iframe>
+```
+
+### UK market
+
+```html
+<iframe src="https://www.upgrade-gpu.com/uk/widget/" ...>
 ```
 
 ---
@@ -125,11 +131,11 @@ The widget is mobile-friendly but works best at **600 px wide or more**. For res
 ```html
 <div style="width:100%;min-width:320px;overflow:hidden;border-radius:6px">
   <iframe
-    src="https://www.best-gpu.com/widget/"
+    src="https://www.upgrade-gpu.com/us/widget/"
     width="100%"
-    height="620"
+    height="640"
     style="border:none;display:block"
-    title="GPU Upgrade Calculator — best-gpu.com"
+    title="GPU Upgrade Calculator — upgrade-gpu.com"
     loading="lazy">
   </iframe>
 </div>
@@ -148,17 +154,17 @@ See [`example.html`](example.html) in this repo for a full ready-to-use HTML pag
 - **Perf Index** = `0.70 × (TimeSpy ÷ 360) + 0.30 × (TFLOPs ÷ 1.65)`
   Blends real gaming benchmark (3DMark TimeSpy) with raw compute (FP32 TFLOPs).
 - **Perf Gain %** = `(upgrade Perf Index ÷ current Perf Index − 1) × 100`
-- **Value Score** = proprietary algorithm weighing performance per dollar
-- Prices are scraped from **Amazon US daily** and served live
+- **Value Score** = performance per dollar, cost-per-%-gain (lower = better value)
+- Prices are scraped from **Amazon daily** and served live
 
-Full methodology: [best-gpu.com/faq.php](https://www.best-gpu.com/faq.php)
+Full methodology: [upgrade-gpu.com/us/faq](https://www.upgrade-gpu.com/us/faq)
 
 ---
 
 ## Attribution
 
-This widget is **free to use** on any site. It is powered by [best-gpu.com](https://www.best-gpu.com).
-A small "Powered by best-gpu.com" credit is shown inside the widget footer.
+This widget is **free to use** on any site. It is powered by [upgrade-gpu.com](https://www.upgrade-gpu.com).
+A small "Powered by upgrade-gpu.com" credit is shown inside the widget footer.
 
 Please **do not** attempt to hide or remove the attribution inside the iframe.
 
@@ -166,15 +172,15 @@ Please **do not** attempt to hide or remove the attribution inside the iframe.
 
 ## Affiliate disclosure
 
-Buy links inside the widget are Amazon affiliate links. Purchases made through these links support [best-gpu.com](https://www.best-gpu.com) at no extra cost to the buyer.
-See [best-gpu.com/privacy.php](https://www.best-gpu.com/privacy.php) for full disclosure.
+Buy links inside the widget are Amazon affiliate links. Purchases made through these links support [upgrade-gpu.com](https://www.upgrade-gpu.com) at no extra cost to the buyer.
+See [upgrade-gpu.com/us/privacy](https://www.upgrade-gpu.com/us/privacy) for full disclosure.
 
 ---
 
 ## Issues & feedback
 
-Open an issue in this repo or email [contact@best-gpu.com](mailto:contact@best-gpu.com).
+Open an issue in this repo or email [contact@upgrade-gpu.com](mailto:contact@upgrade-gpu.com).
 
 ---
 
-*Prices and availability are sourced from Amazon US and may vary. Widget content © [best-gpu.com](https://www.best-gpu.com).*
+*Prices and availability are sourced from Amazon and may vary. Widget content © [upgrade-gpu.com](https://www.upgrade-gpu.com).*
