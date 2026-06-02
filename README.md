@@ -115,15 +115,14 @@ Useful if your page is already about a specific card — your readers land strai
 ### Default sort
 
 ```html
-<!-- Sort by best value score (default) -->
-<iframe src="https://www.upgrade-gpu.com/us/widget/?sort=value" ...>
-
 <!-- Sort by lowest price -->
 <iframe src="https://www.upgrade-gpu.com/us/widget/?sort=price" ...>
 
 <!-- Sort by perf gain -->
 <iframe src="https://www.upgrade-gpu.com/us/widget/?sort=gain" ...>
 ```
+
+Value score is the default — no parameter needed.
 
 ### Combine parameters
 
