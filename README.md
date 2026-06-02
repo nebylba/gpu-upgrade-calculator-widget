@@ -88,11 +88,11 @@ All customisation is done through the `<iframe>` attributes — no config needed
 
 ### Pre-select a GPU
 
-Add a `gpu` query parameter to open the widget with a GPU already selected:
+Append the GPU slug to the widget URL to open it with a GPU already selected:
 
 ```html
 <iframe
-  src="https://www.upgrade-gpu.com/us/widget/?gpu=RTX+3080"
+  src="https://www.upgrade-gpu.com/us/widget/rtx-3080"
   width="100%"
   height="640"
   ...>
@@ -103,14 +103,14 @@ Useful if your page is already about a specific card — your readers land strai
 
 **Popular pre-selections:**
 
-| GPU | URL parameter |
+| GPU | URL |
 |---|---|
-| RTX 3080 | `?gpu=RTX+3080` |
-| RTX 3070 | `?gpu=RTX+3070` |
-| RTX 2080 Ti | `?gpu=RTX+2080+Ti` |
-| RX 6800 XT | `?gpu=RX+6800+XT` |
-| GTX 1080 Ti | `?gpu=GTX+1080+Ti` |
-| GTX 1070 | `?gpu=GTX+1070` |
+| RTX 3080 | `/us/widget/rtx-3080` |
+| RTX 3070 | `/us/widget/rtx-3070` |
+| RTX 2080 Ti | `/us/widget/rtx-2080-ti` |
+| RX 6800 XT | `/us/widget/rx-6800-xt` |
+| GTX 1080 Ti | `/us/widget/gtx-1080-ti` |
+| GTX 1070 | `/us/widget/gtx-1070` |
 
 ### Default sort
 
@@ -129,7 +129,7 @@ Useful if your page is already about a specific card — your readers land strai
 
 ```html
 <iframe
-  src="https://www.upgrade-gpu.com/us/widget/?gpu=GTX+1080+Ti&sort=value"
+  src="https://www.upgrade-gpu.com/us/widget/gtx-1080-ti?sort=value"
   width="100%"
   height="640"
   style="border:none;border-radius:6px;display:block"
