@@ -7,132 +7,274 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #f0f2f5;
-      color: #1a1a2e;
-      padding: 40px 20px;
+    :root {
+      --bg:      #0a0a0c;
+      --bg-1:    #111116;
+      --bg-2:    #18181f;
+      --bg-3:    #1e1e28;
+      --border:  #2a2a35;
+      --text:    #e8e8f0;
+      --text-2:  #a8a8c8;
+      --text-3:  #62628a;
+      --accent:  #00e5ff;
+      --green:   #00e676;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Menlo, monospace;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+    .page { max-width: 900px; margin: 0 auto; padding: 56px 24px 80px; }
 
-    .subtitle {
-      color: #555;
-      font-size: 1rem;
-      margin-bottom: 28px;
-    }
-
-    .subtitle a {
-      color: #0055cc;
-      text-decoration: none;
-    }
-
-    .subtitle a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── Widget wrapper ── */
-    .widget-wrap {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-    }
-
-    .widget-wrap iframe {
-      display: block;
-      width: 100%;
-      height: 640px;
-      border: none;
-    }
-
-    /* ── Embed snippet ── */
-    .code-block {
-      margin-top: 28px;
-      background: #1e1e2e;
-      color: #cdd6f4;
-      border-radius: 6px;
-      padding: 18px 20px;
-      font-family: "Courier New", monospace;
-      font-size: 13px;
-      overflow-x: auto;
-      white-space: pre;
-      line-height: 1.6;
-    }
-
-    .code-label {
-      font-size: 0.75rem;
-      font-weight: 600;
+    /* ── Header ── */
+    .header { margin-bottom: 48px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 26px; padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #888;
-      margin-top: 28px;
-      margin-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    .badge::before {
+      content: ""; display: block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .subtitle {
+      font-size: 15.5px;
+      color: var(--text-2);
+      max-width: 580px;
+      line-height: 1.65;
     }
 
-    .footer-note {
-      margin-top: 20px;
-      font-size: 0.8rem;
-      color: #888;
-      text-align: center;
+    /* ── Section labels ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 12px;
     }
 
-    .footer-note a { color: #0055cc; }
+    /* ── Widget ── */
+    .widget-section { margin-bottom: 56px; }
+    .widget-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-1);
+    }
+    .widget-wrap iframe { display: block; width: 100%; border: none; }
+
+    /* ── Code block ── */
+    .snippet-section { margin-bottom: 56px; }
+    .snippet-wrap {
+      position: relative;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    pre {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.65;
+      padding: 18px 76px 18px 20px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      position: absolute; top: 10px; right: 10px;
+      height: 28px; padding: 0 12px;
+      border-radius: 6px;
+      background: var(--bg-3);
+      border: 1px solid #3d3d50;
+      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+      color: var(--text-2);
+      cursor: pointer; transition: all .12s;
+    }
+    .copy-btn:hover { color: var(--text); border-color: #555; }
+    .copy-btn.copied { color: var(--green); border-color: rgba(0,230,118,.4); }
+
+    /* ── Use case cards ── */
+    .cards-section { margin-bottom: 56px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .card-label { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .card-desc  { font-size: 12.5px; color: var(--text-3); line-height: 1.55; margin: 0; }
+    .card .snippet-wrap { margin-top: 4px; }
+    .card pre { font-size: 11.5px; padding: 14px 70px 14px 14px; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--text-3);
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+    .footer a { color: var(--text-3); }
+    .footer a:hover { color: var(--text-2); }
 
     @media (max-width: 600px) {
-      h1 { font-size: 1.4rem; }
-      .widget-wrap iframe { height: 580px; }
+      .page { padding: 32px 16px 60px; }
+      .cards { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
     }
   </style>
 </head>
 <body>
-<div class="container">
+<div class="page">
 
-  <h1>GPU Upgrade Calculator</h1>
-  <p class="subtitle">
-    Find the best-value GPU upgrade for your current card — live Amazon prices, updated daily.<br>
-    Powered by <a href="https://www.upgrade-gpu.com" target="_blank" rel="noopener">upgrade-gpu.com</a>
-  </p>
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="badge">Free embed · no API key</div>
+    <h1>GPU Upgrade Calculator</h1>
+    <p class="subtitle">
+      Find the best-value GPU upgrade for your current card — live Amazon prices, 200+ models, updated daily.<br>
+      Powered by <a href="https://www.upgrade-gpu.com" target="_blank" rel="noopener">upgrade-gpu.com</a>
+    </p>
+  </header>
 
-  <!-- ══ Widget ══════════════════════════════════════════════════════════════ -->
-  <div class="widget-wrap">
-    <iframe
-      src="https://www.upgrade-gpu.com/us/widget/"
-      width="100%"
-      height="640"
-      title="GPU Upgrade Calculator — upgrade-gpu.com"
-      loading="lazy"
-      allow="clipboard-write">
-    </iframe>
-  </div>
+  <!-- ── Live widget ── -->
+  <section class="widget-section">
+    <p class="section-label">Live widget</p>
+    <div class="widget-wrap">
+      <iframe
+        src="https://www.upgrade-gpu.com/us/widget/"
+        width="100%"
+        height="640"
+        title="GPU Upgrade Calculator — upgrade-gpu.com"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 
-  <!-- ══ Embed snippet ═══════════════════════════════════════════════════════ -->
-  <p class="code-label">Embed code</p>
-  <div class="code-block">&lt;iframe
+  <!-- ── Default embed code ── -->
+  <section class="snippet-section">
+    <p class="section-label">Embed code</p>
+    <div class="snippet-wrap">
+      <pre id="snip-default">&lt;iframe
   src="https://www.upgrade-gpu.com/us/widget/"
   width="100%"
   height="640"
-  style="border:none;border-radius:6px;display:block"
+  style="border:none;border-radius:8px;display:block"
   title="GPU Upgrade Calculator — upgrade-gpu.com"
-  loading="lazy"
-  allow="clipboard-write"&gt;
-&lt;/iframe&gt;</div>
+  loading="lazy"&gt;
+&lt;/iframe&gt;</pre>
+      <button class="copy-btn" data-target="snip-default">Copy</button>
+    </div>
+  </section>
 
-  <p class="footer-note">
-    Widget content &amp; prices &copy; <a href="https://www.upgrade-gpu.com" target="_blank" rel="noopener">upgrade-gpu.com</a>
-    &nbsp;·&nbsp;
-    <a href="https://www.upgrade-gpu.com/us/privacy" target="_blank" rel="noopener">Privacy &amp; affiliate disclosure</a>
-  </p>
+  <!-- ── Use case cards ── -->
+  <section class="cards-section">
+    <p class="section-label">Pre-configured examples</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-label">RTX 3080 review pages</span>
+        <p class="card-desc">Opens with the RTX 3080 pre-selected — readers land straight on relevant upgrades.</p>
+        <div class="snippet-wrap">
+          <pre id="snip-rtx3080">&lt;iframe src="https://www.upgrade-gpu.com/us/widget/rtx-3080/" width="100%" height="640" style="border:none;border-radius:8px;display:block" title="GPU Upgrade Calculator — RTX 3080" loading="lazy"&gt;&lt;/iframe&gt;</pre>
+          <button class="copy-btn" data-target="snip-rtx3080">Copy</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-label">GTX 10 series legacy guides</span>
+        <p class="card-desc">Shows readers still on a GTX 1080 Ti exactly how much they're leaving on the table.</p>
+        <div class="snippet-wrap">
+          <pre id="snip-1080ti">&lt;iframe src="https://www.upgrade-gpu.com/us/widget/gtx-1080-ti/" width="100%" height="640" style="border:none;border-radius:8px;display:block" title="GPU Upgrade Calculator — GTX 1080 Ti" loading="lazy"&gt;&lt;/iframe&gt;</pre>
+          <button class="copy-btn" data-target="snip-1080ti">Copy</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-label">UK audience</span>
+        <p class="card-desc">Amazon UK prices in GBP — no manual currency conversion for your readers.</p>
+        <div class="snippet-wrap">
+          <pre id="snip-uk">&lt;iframe src="https://www.upgrade-gpu.com/uk/widget/" width="100%" height="640" style="border:none;border-radius:8px;display:block" title="GPU Upgrade Calculator (UK)" loading="lazy"&gt;&lt;/iframe&gt;</pre>
+          <button class="copy-btn" data-target="snip-uk">Copy</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-label">2026 buyer's guides</span>
+        <p class="card-desc">No GPU pre-selected — readers explore the full catalogue and pick their own starting point.</p>
+        <div class="snippet-wrap">
+          <pre id="snip-buyers">&lt;iframe src="https://www.upgrade-gpu.com/us/widget/" width="100%" height="800" style="border:none;border-radius:8px;display:block" title="GPU Upgrade Calculator — upgrade-gpu.com" loading="lazy"&gt;&lt;/iframe&gt;</pre>
+          <button class="copy-btn" data-target="snip-buyers">Copy</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <span>Widget &amp; prices © <a href="https://www.upgrade-gpu.com" target="_blank" rel="noopener">upgrade-gpu.com</a></span>
+    <span>·</span>
+    <a href="https://github.com/nebylba/gpu-upgrade-calculator-widget" target="_blank" rel="noopener">GitHub</a>
+    <span>·</span>
+    <a href="https://www.upgrade-gpu.com/us/privacy/" target="_blank" rel="noopener">Privacy &amp; affiliate disclosure</a>
+  </footer>
 
 </div>
+
+<script>
+(function () {
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = document.getElementById(btn.dataset.target);
+      if (!pre) return;
+      var text = pre.textContent || pre.innerText;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { flash(btn); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); flash(btn); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+  function flash(btn) {
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  }
+})();
+</script>
 </body>
 </html>
