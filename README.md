@@ -1,5 +1,11 @@
 # GPU Upgrade Calculator Widget
 
+[![Stars](https://img.shields.io/github/stars/nebylba/gpu-upgrade-calculator-widget?style=social)](https://github.com/nebylba/gpu-upgrade-calculator-widget)
+[![License](https://img.shields.io/github/license/nebylba/gpu-upgrade-calculator-widget)](LICENSE)
+[![upgrade-gpu.com](https://img.shields.io/badge/Powered_by-upgrade--gpu.com-56d6c7)](https://www.upgrade-gpu.com)
+
+![GPU Upgrade Calculator Widget](docs/widget-screenshot.png)
+
 A free embeddable widget powered by [upgrade-gpu.com](https://www.upgrade-gpu.com) — the GPU price-to-performance tracker using live Amazon prices.
 
 Drop one `<iframe>` on your page and your visitors can instantly find out whether upgrading their GPU is worth it.
@@ -9,6 +15,14 @@ Drop one `<iframe>` on your page and your visitors can instantly find out whethe
 ## Live demo
 
 👉 [upgrade-gpu.com/us/widget](https://www.upgrade-gpu.com/us/widget/)
+
+---
+
+## Try it on CodePen
+
+- [Default widget](https://codepen.io/nebylba/pen/YOUR_PEN_ID) — drops into any page
+- [Pre-set to RTX 3080](https://codepen.io/nebylba/pen/YOUR_PEN_ID) — for RTX 3080 review pages
+- [Pre-set to GTX 1080 Ti](https://codepen.io/nebylba/pen/YOUR_PEN_ID) — for legacy upgrade content
 
 ---
 
@@ -29,6 +43,14 @@ Copy and paste this snippet wherever you want the widget to appear:
 ```
 
 That's it. No API key, no sign-up, no JavaScript to load.
+
+---
+
+## Who's using this?
+
+- [your-site-here] — your hardware blog or review site
+
+[Open a PR or issue to add yours.](https://github.com/nebylba/gpu-upgrade-calculator-widget/issues)
 
 ---
 
