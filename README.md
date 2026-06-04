@@ -16,6 +16,14 @@ Drop one `<iframe>` on your page and visitors can instantly find out whether upg
 
 ---
 
+## Try it on CodePen
+
+- [Default widget](https://codepen.io/E-BLYN/pen/OPbvVeZ) — drops into any page
+- [Pre-set to RTX 3080](https://codepen.io/E-BLYN/pen/MYbGjGm) — for RTX 3080 review pages
+- [Pre-set to GTX 1080 Ti](https://codepen.io/E-BLYN/pen/VYmxKxg) — for legacy upgrade content
+
+---
+
 ## Quick start
 
 ```html
